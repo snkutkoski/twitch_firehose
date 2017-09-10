@@ -49,3 +49,6 @@ config :logger, :console, format: "[$level] $message\n"
 config :phoenix, :stacktrace_depth, 20
 
 config :twitch_firehose, :connection_handler, TwitchFirehose.ConnectionHandlerImpl
+config :twitch_firehose, :chat_token, System.get_env("TWITCH_CHAT_TOKEN")
+config :twitch_firehose, :twitch_username, System.get_env("TWITCH_USERNAME")
+config :twitch_firehose, :chat_host, "irc.chat.twitch.tv"

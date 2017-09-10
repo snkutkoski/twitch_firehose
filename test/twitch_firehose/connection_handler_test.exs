@@ -7,15 +7,7 @@ defmodule TwitchFirehose.ConnectionHandlerTest do
   alias TwitchFirehose.ConnectionHandlerImpl, as: Handler
 
   setup do
-    {
-      :ok,
-      handler_state: %State{
-        host: "test_host",
-        port: 6667,
-        pass: "test_pass",
-        nick: "test_nick"
-      }
-    }
+    {:ok, handler_state: %State{}}
   end
 
   test "adds itself as a handler to the IRC client and connects the client to the host/port", %{handler_state: state} do
