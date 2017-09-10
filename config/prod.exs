@@ -62,3 +62,8 @@ config :logger, level: :info
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
 import_config "prod.secret.exs"
+
+config :twitch_firehose, :connection_handler, TwitchFirehose.ConnectionHandlerImpl
+config :twitch_firehose, :chat_token, System.get_env("TWITCH_CHAT_TOKEN")
+config :twitch_firehose, :twitch_username, System.get_env("TWITCH_USERNAME")
+config :twitch_firehose, :chat_host, "irc.chat.twitch.tv"

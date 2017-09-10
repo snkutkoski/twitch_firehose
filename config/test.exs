@@ -8,3 +8,8 @@ config :twitch_firehose, TwitchFirehoseWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+config :twitch_firehose, :connection_handler, TwitchFirehose.ConnectionHandlerMock
+config :twitch_firehose, :chat_token, "test_token"
+config :twitch_firehose, :twitch_username, "test_username"
+config :twitch_firehose, :chat_host, "test.irc.host"

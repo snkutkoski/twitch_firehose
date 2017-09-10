@@ -1,17 +1,20 @@
 defmodule TwitchFirehose.Application do
   use Application
 
+  @connection_handler Application.get_env(:twitch_firehose, :connection_handler)
+
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   def start(_type, _args) do
     import Supervisor.Spec
 
+    {:ok, client} = ExIrc.start_client!
+
     # Define workers and child supervisors to be supervised
     children = [
       # Start the endpoint when the application starts
       supervisor(TwitchFirehoseWeb.Endpoint, []),
-      # Start your own worker by calling: TwitchFirehose.Worker.start_link(arg1, arg2, arg3)
-      # worker(TwitchFirehose.Worker, [arg1, arg2, arg3]),
+      worker(@connection_handler, [client])
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
