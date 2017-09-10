@@ -1,2 +1,4 @@
+<h2>Twitch Firehose Demo</h2>
+
 <div id="messages"></div>
 <input id="chat-input" type="text"></input>

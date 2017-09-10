@@ -8,3 +8,5 @@ config :twitch_firehose, TwitchFirehoseWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+config :twitch_firehose, :connection_handler, TwitchFirehose.ConnectionHandlerMock

@@ -5,7 +5,7 @@ defmodule TwitchFirehose.Mixfile do
     [
       app: :twitch_firehose,
       version: "0.0.1",
-      elixir: "~> 1.4",
+      elixir: "~> 1.5",
       elixirc_paths: elixirc_paths(Mix.env),
       compilers: [:phoenix, :gettext] ++ Mix.compilers,
       start_permanent: Mix.env == :prod,
@@ -19,7 +19,7 @@ defmodule TwitchFirehose.Mixfile do
   def application do
     [
       mod: {TwitchFirehose.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :exirc, :httpoison]
     ]
   end
 
@@ -37,7 +37,11 @@ defmodule TwitchFirehose.Mixfile do
       {:phoenix_html, "~> 2.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
-      {:cowboy, "~> 1.0"}
+      {:cowboy, "~> 1.0"},
+      {:exirc, git: "https://github.com/snkutkoski/exirc", branch: "master"},
+      {:httpoison, "~> 0.13"},
+      {:mock, "~> 0.2.0", only: :test},
+      {:ex_doc, "~> 0.16", only: :dev, runtime: false}
     ]
   end
 end
