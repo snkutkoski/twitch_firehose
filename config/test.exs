@@ -13,3 +13,5 @@ config :twitch_firehose, :connection_handler, TwitchFirehose.ConnectionHandlerMo
 config :twitch_firehose, :chat_token, "test_token"
 config :twitch_firehose, :twitch_username, "test_username"
 config :twitch_firehose, :chat_host, "test.irc.host"
+config :twitch_firehose, :client_id, System.get_env("TWITCH_CLIENT_ID")
+config :twitch_firehose, :streams_api, TwitchApi.StreamsMock

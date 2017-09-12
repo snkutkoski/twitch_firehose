@@ -9,12 +9,15 @@ defmodule TwitchFirehose.Application do
     import Supervisor.Spec
 
     {:ok, client} = ExIrc.start_client!
+    {:ok, rate_limiter} = TwitchApi.RateLimiter.start_link
+    {:ok, channel_store} = TwitchApi.ChannelStore.start_link
 
     # Define workers and child supervisors to be supervised
     children = [
       # Start the endpoint when the application starts
       supervisor(TwitchFirehoseWeb.Endpoint, []),
-      worker(@connection_handler, [client])
+      worker(@connection_handler, [client]),
+      worker(TwitchApi.FetchActiveStreams, [rate_limiter, channel_store])
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
