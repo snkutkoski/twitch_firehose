@@ -1,0 +1,2 @@
+defmodule TwitchApi do
+end

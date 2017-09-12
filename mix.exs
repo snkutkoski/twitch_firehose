@@ -41,7 +41,8 @@ defmodule TwitchFirehose.Mixfile do
       {:exirc, git: "https://github.com/snkutkoski/exirc", branch: "master"},
       {:httpoison, "~> 0.13"},
       {:mock, "~> 0.2.0", only: :test},
-      {:ex_doc, "~> 0.16", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.16", only: :dev, runtime: false},
+      {:poison, "~> 3.1"}
     ]
   end
 end

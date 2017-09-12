@@ -52,3 +52,5 @@ config :twitch_firehose, :connection_handler, TwitchFirehose.ConnectionHandlerIm
 config :twitch_firehose, :chat_token, System.get_env("TWITCH_CHAT_TOKEN")
 config :twitch_firehose, :twitch_username, System.get_env("TWITCH_USERNAME")
 config :twitch_firehose, :chat_host, "irc.chat.twitch.tv"
+config :twitch_firehose, :client_id, System.get_env("TWITCH_CLIENT_ID")
+config :twitch_firehose, :streams_api, TwitchApi.Streams
