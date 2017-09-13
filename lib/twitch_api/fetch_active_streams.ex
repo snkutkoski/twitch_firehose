@@ -45,7 +45,7 @@ defmodule TwitchApi.FetchActiveStreams do
   end
 
   defp enqueue_fetch_all(offset, total_active, rate_limiter, channel_store) do
-    continue = offset < 100
+    continue = offset < 200
     pid = self()
 
     RateLimiter.enqueue(
@@ -56,7 +56,7 @@ defmodule TwitchApi.FetchActiveStreams do
       fn(response) ->
         save_channels(channel_store, response)
         if !continue do
-          ChannelStore.expire_store(channel_store)
+          ChannelStore.age(channel_store)
           fetch_init(pid)
         end
       end

@@ -1,12 +1,12 @@
 defmodule TwitchApi.RateLimiter do
   use GenServer
 
-  def start_link do
-    GenServer.start_link(__MODULE__, :queue.new)
+  def start_link(ms) do
+    GenServer.start_link(__MODULE__, {:queue.new, ms})
   end
 
-  def init(queue) do
-    :timer.apply_interval(:timer.seconds(1), __MODULE__, :tick, [self()])
+  def init({queue, ms}) do
+    :timer.apply_interval(ms, __MODULE__, :tick, [self()])
     {:ok, queue}
   end
 
